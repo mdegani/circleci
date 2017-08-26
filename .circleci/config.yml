@@ -1,0 +1,32 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/tmp
+    docker:
+      - image: circleci/node:6-browsers
+    steps:
+      - checkout
+      - run: npm install
+      - persist_to_workspace:
+          root: ~/tmp
+          paths:
+            - .
+  test:
+    working_directory: ~/tmp
+    docker:
+      - image: circleci/node:6-browsers
+    steps:
+      - attach_workspace:
+          at: ~/tmp
+      - run: pwd
+      - run: ls
+      - run: npm test
+
+workflows:
+  version: 2
+  build_test_and_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
