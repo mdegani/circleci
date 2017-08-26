@@ -16,17 +16,17 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - persist_to_workspace:
-          root: ~/repo
-          paths:
-            - .
+      # - persist_to_workspace:
+      #     root: ~/repo
+      #     paths:
+      #       - .
   test:
     docker:
       - image: circleci/node:6-browsers
     working_directory: ~/repo
     steps:
-      - attach_workspace:
-          at: ~/repo
+      # - attach_workspace:
+      #     at: ~/repo
       - run: pwd
       - run: ls
       - run: npm test
