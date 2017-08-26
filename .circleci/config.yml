@@ -29,6 +29,9 @@ jobs:
       - run: pwd
       - run: ls
       - run: npm test
+      - store_artifacts:
+          path: /coverage/lcov.info
+          destination: coverage
 
 workflows:
   version: 2
