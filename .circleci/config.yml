@@ -30,7 +30,7 @@ jobs:
       - run: ls
       - run: npm test
       - store_artifacts:
-          path: /coverage/lcov.info
+          path: ~/repo/coverage/lcov.info
           destination: coverage
 
 workflows:
