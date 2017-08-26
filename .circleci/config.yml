@@ -21,9 +21,9 @@ jobs:
           paths:
             - .
   test:
-    working_directory: ~/repo
     docker:
       - image: circleci/node:6-browsers
+    working_directory: ~/repo
     steps:
       - attach_workspace:
           at: ~/repo
